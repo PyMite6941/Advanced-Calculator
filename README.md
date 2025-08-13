@@ -1,2 +1,2 @@
 # Advanced-Calculator
-This is a very advanced Math Calculator
+This Calculator has many functions that I will soon write down here
