@@ -72,7 +72,7 @@ def math_choice():
     elif choice == 6:
         a = float(input("Enter a number to be rooted to the nth power:\n> "))
         n = float(input("Enter the nth root:\n> "))
-        print(math.pow(a, n))
+        print(a ** (1/n))
     elif choice == 7:
         print("Options:")
         print("1. Addition")
@@ -147,6 +147,8 @@ def math_choice():
                 print("\nResult")
                 print(np.subtract(n_matrix_a, n_matrix_b))
         elif N == 3:
+            matrix_a = []
+            matrix_b = []
             matrix_a_row = int(input("Enter the number of rows for Matrix A:\n> "))
             matrix_a_col = int(input("Enter the number of columns for Matrix A:\n> "))
             matrix_b_row = int(input("Enter the number of rows for Matrix B:\n> "))
@@ -176,7 +178,7 @@ def math_choice():
                 for i in matrix_b:
                     print(i)
                 print("\nResult")
-                print(np.multiply(n_matrix_a, n_matrix_b))
+                print(np.dot(n_matrix_a, n_matrix_b))
             else:
                 print("Multiplication of these matrices is not possible (columns of matrix-a = row of matrix-b)")
         elif N == 4:
@@ -318,31 +320,58 @@ def math_choice():
             x = fractions.Fraction(a, b)
             y = fractions.Fraction(c, d)
             print(x / y)
-    elif choice == 20:
+    elif choice == 14:
+        print("Options:")
+        print("1. Radians")
+        print("2. Degrees")
+        N = int(input("Your choice:\n> "))
+        if N == 1:
+            X = float(input("Enter the degree in Radians:\n> "))
+            x = math.degrees(X)
+            print(f"Sine: {math.sin(x)}")
+            print(f"Cosine: {math.cos(x)}")
+            print(f"Tangent: {math.tan(x)}")
+            print(f"Arcsine: {math.asin(x)}")
+            print(f"Arccosine: {math.acos(x)}")
+            print(f"Arctangent: {math.atan(x)}")
+            print(f"Hyperbolic Sine: {math.sinh(x)}")
+            print(f"Hyperbolic Cosine: {math.cosh(x)}")
+            print(f"Hyperbolic Tangent: {math.tanh(x)}")
+        elif N == 2:
+            x = float(input("Enter the degree in Degrees:\n> "))
+            print(f"Sine: {math.sin(x)}")
+            print(f"Cosine: {math.cos(x)}")
+            print(f"Tangent: {math.tan(x)}")
+            print(f"Arcsine: {math.asin(x)}")
+            print(f"Arccosine: {math.acos(x)}")
+            print(f"Arctangent: {math.atan(x)}")
+            print(f"Hyperbolic Sine: {math.sinh(x)}")
+            print(f"Hyperbolic Cosine: {math.cosh(x)}")
+            print(f"Hyperbolic Tangent: {math.tanh(x)}")
+    elif choice == 15:
         a = int(input("Enter the 'n' value:\n> "))
         b = int(input("Enter the 'k' value:\n> "))
-        c = a - b
         x = math.factorial(a)
-        X = math.factorial(c)
+        X = math.factorial(a - b)
         print(x / X)
-    elif choice == 21:
+    elif choice == 16:
         a = int(input("Enter the 'n' value: "))
         b = int(input("Enter the 'k' value: "))
         print(math.comb(a, b))
-    elif choice == 22:
+    elif choice == 17:
         x = int(input("Enter the 'x' value:\n> "))
         print(math.factorial(x))
-    elif choice == 23:
+    elif choice == 18:
         N = int(input("Enter the number to be factored:\n> "))
         for x in range (1, N + 1):
             if N % x == 0:
                 print(x, end=" ")
-    elif choice == 24:
+    elif choice == 19:
         N = int(input("Enter a row of Pascal's Triangle:\n> "))
         for i in range(N + 1):
                 print(math.comb(N, i), end=" ")
         print()
-    elif choice == 25:
+    elif choice == 20:
         n = int(input("Enter the number of Fibonacci Sequence to be displayed:\n> "))
         a = 0
         b = 1
@@ -354,7 +383,7 @@ def math_choice():
             a, b = b, next
             next = a + b
         print()
-    elif choice == 26:
+    elif choice == 21:
         def is_prime(num):
             if num <= 1:
                 return False
@@ -397,22 +426,16 @@ while True:
     print("11. Find the Greatest Common Multiple")
     print("12. Convert Decimals and Fractions")
     print("13. Basic Arithmetic with Fractions")
-    print("- Trigonomeric Functions -")
-    print("14. Sine")
-    print("15. Cosine")
-    print("16. Tangent")
-    print("17. Arcsine")
-    print("18. Arccosine")
-    print("19. Arctangent")
+    print("14. Trigonomic Functions")
     print("- Advanced Formulas -")
-    print("20. Calculate Permutations")
-    print("21. Calculate Combinations")
-    print("22. Calculate Factorials")
+    print("15. Calculate Permutations")
+    print("16. Calculate Combinations")
+    print("17. Calculate Factorials")
     print("- Niche Functions -")
-    print("23. Factoring Numbers")
-    print("24. Display Rows of Pascal's Triangle")
-    print("25. Display Sequence of Fibonnaci Sequence")
-    print("26. Determine if n is prime")
+    print("18. Factoring Numbers")
+    print("19. Display Rows of Pascal's Triangle")
+    print("20. Display Sequence of Fibonnaci Sequence")
+    print("21. Determine if n is prime")
     global choice 
     choice = int(input("Your choice:\n> "))
     math_choice()
