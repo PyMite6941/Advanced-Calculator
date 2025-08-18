@@ -1,45 +1,49 @@
 import math
 import fractions
 import numpy as np
+BLUE = '\033[34m'
+GREEN = '\033[32m'
+RED = '\033[31m'
+RESET = '\033[0m'
 def math_choice():
     if choice == 1:
         total = 0
         print("Addition")
         while True:
             num_str = float(input("> "))
-            if num_str.lower() == 'done' or num_str == '':
+            if num_str == 'done' or num_str == '':
                 break
             try:
                 num = float(num_str)
                 total += num
             except ValueError:
-                print("Invalid input")
+                print(f"{RED}Invalid input{RESET}")
         print(total)
     elif choice == 2:
         total = 0
         print("Subtraction")
         while True:
             num_str = float(input("> "))
-            if num_str.lower() == 'done' or num_str == '':
+            if num_str == 'done' or num_str == '':
                 break
             try:
                 num = float(num_str)
                 total -= num
             except ValueError:
-                print("Invalid input")
+                print(f"{RED}Invalid input{RESET}")
         print(total)
     elif choice == 3:
         total = 1
         print("Multiplication")
         while True:
             num_str = float(input("> "))
-            if num_str.lower() == 'done' or num_str == '':
+            if num_str == 'done' or num_str == '':
                 break
             try:
                 num = float(num_str)
                 total *= num
             except ValueError:
-                print("Invalid input")
+                print(f"{RED}Invalid input{RESET}")
         print(total)
     elif choice == 4:
         result = None
@@ -47,9 +51,9 @@ def math_choice():
         first_number_entered = False
         while True:
             num_str = float(input("> "))
-            if num_str.lower() == 'done' or num_str == '':
+            if num_str == 'done' or num_str == '':
                 if not first_number_entered:
-                    print("No numbers entered for division.")
+                    print(f"{RED}No numbers entered for division{RESET}.")
                 break
             try:
                 num = float(num_str)
@@ -58,21 +62,21 @@ def math_choice():
                     first_number_entered = True
                 else:
                     if num == 0:
-                        print("Error: Cannot divide by zero! Please enter a non-zero number.")
+                        print(f"{RED}Error{RESET}: Cannot divide by zero! Please enter a non-zero number.")
                         continue
                     result /= num
             except ValueError:
-                print("Invalid input")
+                print(f"{RED}Invalid input{RESET}")
         if first_number_entered:
-            print(result)
+            print(f"{GREEN}{result}{RESET}")
     elif choice == 5:
-        N = float(input("Enter a number to be put to the nth power:\n> "))
-        m = float(input("Enter the nth power:\n> "))
-        print(N**m)
+        N = float(input(f"Enter a {BLUE}number to be put to the nth power{RESET}:\n> "))
+        m = float(input(f"Enter the {BLUE}nth power{RESET}:\n> "))
+        print(f"{GREEN}{N**m}{RESET}")
     elif choice == 6:
-        a = float(input("Enter a number to be rooted to the nth power:\n> "))
-        n = float(input("Enter the nth root:\n> "))
-        print(a ** (1/n))
+        a = float(input(f"Enter a {BLUE}number to be rooted to the nth power{RESET}:\n> "))
+        n = float(input(f"Enter the {BLUE}nth root{RESET}:\n> "))
+        print(f"{GREEN}{a ** (1/n)}{RESET}")
     elif choice == 7:
         print("Options:")
         print("1. Addition")
@@ -83,140 +87,140 @@ def math_choice():
         if N == 1:
             matrix_a = []
             matrix_b = []
-            matrix_a_row = int(input("Enter the number of rows for Matrix A:\n> "))
-            matrix_a_col = int(input("Enter the number of columns for Matrix A:\n> "))
-            matrix_b_row = int(input("Enter the number of rows for Matrix B:\n> "))
-            matrix_b_col = int(input("Enter the number of columns for Matrix B:\n> "))
+            matrix_a_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_a_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_b_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix B{RESET}:\n> "))
+            matrix_b_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix B{RESET}:\n> "))
             if matrix_a_row == matrix_b_row and matrix_a_col == matrix_b_col:
-                print("Enter values for Matrix A:")
+                print(f"Enter values for {BLUE}Matrix A{RESET}:")
                 for i in range(matrix_a_row):
                     a_row = []
                     for j in range(matrix_a_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         a_row.append(element)
                     matrix_a.append(a_row)
-                print("Enter values for Matrix B:")
+                print(f"Enter values for {BLUE}Matrix B{RESET}:")
                 for i in range(matrix_b_row):
                     b_row = []
                     for j in range(matrix_b_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         b_row.append(element)
                     matrix_b.append(b_row)
-                print("Matrix-A")
+                print(f"{RED}Matrix A{RESET}")
                 n_matrix_a = np.array(matrix_a)
                 for i in matrix_a:
                     print(i)
                 print()
-                print("Matrix-B")
+                print(f"{RED}Matrix B{RESET}")
                 n_matrix_b = np.array(matrix_b)
                 for i in matrix_b:
                     print(i)
                 print("\nResult")
-                print(np.add(n_matrix_a, n_matrix_b))
+                print(f"{GREEN}{np.add(n_matrix_a, n_matrix_b)}{RESET}")
         elif N == 2:
             matrix_a = []
             matrix_b = []
-            matrix_a_row = int(input("Enter the number of rows for Matrix A:\n> "))
-            matrix_a_col = int(input("Enter the number of columns for Matrix A:\n> "))
-            matrix_b_row = int(input("Enter the number of rows for Matrix B:\n> "))
-            matrix_b_col = int(input("Enter the number of columns for Matrix B:\n> "))
+            matrix_a_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_a_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_b_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix B{RESET}:\n> "))
+            matrix_b_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix B{RESET}:\n> "))
             if matrix_a_row == matrix_b_row and matrix_a_col == matrix_b_col:
-                print("Enter values for Matrix A:")
+                print(f"Enter values for {BLUE}Matrix A{RESET}:")
                 for i in range(matrix_a_row):
                     a_row = []
                     for j in range(matrix_a_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         a_row.append(element)
                     matrix_a.append(a_row)
-                print("Enter values for Matrix B:")
+                print(f"Enter values for {BLUE}Matrix B{RESET}:")
                 for i in range(matrix_b_row):
                     b_row = []
                     for j in range(matrix_b_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){BLUE}:\n> "))
                         b_row.append(element)
                     matrix_b.append(b_row)
-                print("Matrix-A")
+                print(f"{RED}Matrix A{RESET}")
                 n_matrix_a = np.array(matrix_a)
                 for i in matrix_a:
                     print(i)
                 print()
-                print("Matrix-B")
+                print(f"{RED}Matrix B{RESET}")
                 n_matrix_b = np.array(matrix_b)
                 for i in matrix_b:
                     print(i)
                 print("\nResult")
-                print(np.subtract(n_matrix_a, n_matrix_b))
+                print(f"{GREEN}{np.subtract(n_matrix_a, n_matrix_b)}{RESET}")
         elif N == 3:
             matrix_a = []
             matrix_b = []
-            matrix_a_row = int(input("Enter the number of rows for Matrix A:\n> "))
-            matrix_a_col = int(input("Enter the number of columns for Matrix A:\n> "))
-            matrix_b_row = int(input("Enter the number of rows for Matrix B:\n> "))
-            matrix_b_col = int(input("Enter the number of columns for Matrix B:\n> "))
+            matrix_a_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_a_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_b_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix B{RESET}:\n> "))
+            matrix_b_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix B{RESET}:\n> "))
             if matrix_a_col == matrix_b_row:
-                print("Enter values for Matrix A:")
+                print(f"Enter values for {BLUE}Matrix A{RESET}:")
                 for i in range(matrix_a_row):
                     a_row = []
                     for j in range(matrix_a_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         a_row.append(element)
                     matrix_a.append(a_row)
-                print("Enter values for Matrix B:")
+                print(f"Enter values for {BLUE}Matrix B{RESET}:")
                 for i in range(matrix_b_row):
                     b_row = []
                     for j in range(matrix_b_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         b_row.append(element)
                     matrix_b.append(b_row)
-                print("Matrix-A")
+                print(f"{BLUE}Matrix A{RESET}")
                 n_matrix_a = np.array(matrix_a)
                 for i in matrix_a:
                     print(i)
                 print()
-                print("Matrix-B")
+                print(f"{BLUE}Matrix B{RESET}")
                 n_matrix_b = np.array(matrix_b)
                 for i in matrix_b:
                     print(i)
                 print("\nResult")
-                print(np.dot(n_matrix_a, n_matrix_b))
+                print(f"{GREEN}{np.dot(n_matrix_a, n_matrix_b)}{RESET}")
             else:
-                print("Multiplication of these matrices is not possible (columns of matrix-a = row of matrix-b)")
+                print(f"Multiplication of these matrices is {RED}not possible{RESET} (columns of matrix-a = row of matrix-b)")
         elif N == 4:
             matrix_a = []
             matrix_b = []
-            matrix_a_row = int(input("Enter the number of rows for Matrix A:\n> "))
-            matrix_a_col = int(input("Enter the number of columns for Matrix A:\n> "))
-            matrix_b_row = int(input("Enter the number of rows for Matrix B:\n> "))
-            matrix_b_col = int(input("Enter the number of columns for Matrix B:\n> "))
+            matrix_a_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_a_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix A{RESET}:\n> "))
+            matrix_b_row = int(input(f"Enter the {BLUE}number of rows{RESET} for {RED}Matrix B{RESET}:\n> "))
+            matrix_b_col = int(input(f"Enter the {BLUE}number of columns{RESET} for {RED}Matrix B{RESET}:\n> "))
             if matrix_a_row == matrix_b_row and matrix_a_col == matrix_b_col:
-                print("Enter values for Matrix A:")
+                print(f"Enter values for {BLUE}Matrix A{RESET}:")
                 for i in range(matrix_a_row):
                     a_row = []
                     for j in range(matrix_a_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         a_row.append(element)
                     matrix_a.append(a_row)
-                print("Enter values for Matrix B:")
+                print(f"Enter values for {BLUE}Matrix B{RESET}:")
                 for i in range(matrix_b_row):
                     b_row = []
                     for j in range(matrix_b_col):
-                        element = int(input(f"Enter element at ({i+1},{j+1}): "))
+                        element = int(input(f"Enter element at {BLUE}({i+1},{j+1}){RESET}:\n> "))
                         b_row.append(element)
                     matrix_b.append(b_row)
-                print("Matrix-A")
+                print(f"{BLUE}Matrix A{RESET}")
                 n_matrix_a = np.array(matrix_a)
                 for i in matrix_a:
                     print(i)
                 print()
-                print("Matrix-B")
+                print(f"{BLUE}Matrix B{RESET}")
                 n_matrix_b = np.array(matrix_b)
                 for i in matrix_b:
                     print(i)
                 print("\nResult")
-                print(np.divide(n_matrix_a, n_matrix_b))
+                print(f"{GREEN}{np.divide(n_matrix_a, n_matrix_b)}{RESET}")
     elif choice == 8:
-        b = float(input("Enter the 'base' value:\n> "))
-        x = float(input("Enter the 'exponent' value:\n> "))
+        b = float(input(f"Enter the {BLUE}base value{RESET}:\n> "))
+        x = float(input(f"Enter the {BLUE}exponent value{RESET}:\n> "))
         print(math.log(b, x))
     elif choice == 9:
         print("Options:")
@@ -225,17 +229,17 @@ def math_choice():
         N = int(input("Choose a service:\n> "))
         while True:
             if N == 1:
-                d = float(input("Enter the angle in degrees: "))
+                d = float(input(f"Enter the {BLUE}angle in degrees{RESET}:\n> "))
                 r = float(d * (math.pi / 180))
                 print(r)
             elif N == 2:
-                r = float(input("Enter the angle in radians: "))
+                r = float(input(f"Enter the {BLUE}angle in radians{RESET}:\n> "))
                 d = float(r * (180 / math.pi))
                 print(d)
     elif choice == 10:
         print("Finding the Lowest Common Multiple")
-        a_str = float(input("Enter the first number:\n> "))
-        b_str = float(input("Enter the second number:\n> "))
+        a_str = float(input(f"Enter the {BLUE}first integar{RESET}:\n> "))
+        b_str = float(input(f"Enter the {BLUE}second number{RESET}:\n> "))
         a = int(a_str)
         b = int(b_str)
         def lcm(a, b):
@@ -247,8 +251,8 @@ def math_choice():
             return a * b
         print(lcm(a, b))
     elif choice == 11:
-        a_str = float(input("Enter the first whole number:\n> "))
-        b_str = float(input("Enter the second whole number:\n> "))
+        a_str = float(input(f"Enter the {BLUE}first integar{RESET}:\n> "))
+        b_str = float(input(f"Enter the {BLUE}second integar{RESET}:\n> "))
         a = int(a_str)
         b = int(b_str)
         def hcf(a, b):
@@ -261,25 +265,25 @@ def math_choice():
                 H -= 1
             return 1
         if a == 0 and b == 0:
-            print("The GCD of two zeros is undefined (or often considered 0).")
+            print(f"The GCD of two zeros is {RED}undefined{RESET} (or often considered 0).")
         elif a == 0:
-            print(f"{abs(b)}")
+            print(f"{GREEN}{abs(b)}{RESET}")
         elif b == 0:
-            print(f"{abs(a)}")
+            print(f"{GREEN}{abs(a)}{RESET}")
         else:
             result = hcf(abs(a), abs(b))
-            print(result)
+            print(f"{GREEN}{result}{RESET}")
     elif choice == 12:
         print("Options:")
         print("1. Decimal -> Fraction")
         print("2. Fraction -> Decimal")
         N = int(input("Chose a service:\n> "))
         if (N == 1):
-            a = float(input("Enter the decimal:\n> "))
+            a = float(input(f"Enter the {BLUE}decimal{RESET}:\n> "))
             print(fractions.Fraction(a))
         elif (N == 2):
-            a = int(input("Enter the numerator value:\n> "))
-            b = int(input("Enter the denominator value:\n> "))
+            a = int(input(f"Enter the {BLUE}numerator value{RESET}:\n> "))
+            b = int(input(f"Enter the {BLUE}denominator value{RESET}:\n> "))
             print(a / b)
     elif choice == 13:
         print("Options:")
@@ -289,90 +293,107 @@ def math_choice():
         print("4. Division")
         N = int(input("Chose a service:\n> "))
         if N == 1:
-            a = int(input("Enter the 'numerator' value of Fraction 1:\n> "))
-            b = int(input("Enter the 'denominator' value of Fraction 1:\n> "))
-            c = int(input("Enter the 'numerator' value of Fraction 2:\n> "))
-            d = int(input("Enter the 'denominator' value of Fraction 2:\n> "))
+            a = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            b = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            c = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 2:{RESET}\n> "))
+            d = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 2:{RESET}\n> "))
             x = fractions.Fraction(a, b)
             y = fractions.Fraction(c, d)
-            print(x + y)
+            print(f"{GREEN}{x + y}{RESET}")
         elif N == 2:
-            a = int(input("Enter the 'numerator' value of Fraction 1:\n> "))
-            b = int(input("Enter the 'denominator' value of Fraction 1:\n> "))
-            c = int(input("Enter the 'numerator' value of Fraction 2:\n> "))
-            d = int(input("Enter the 'denominator' value of Fraction 2:\n> "))
+            a = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            b = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            c = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 2{RESET}:\n> "))
+            d = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 2{RESET}:\n> "))
             x = fractions.Fraction(a, b)
             y = fractions.Fraction(c, d)
-            print(x - y)
+            print(f"{GREEN}{x - y}{RESET}")
         elif N == 3:
-            a = int(input("Enter the 'numerator' value of Fraction 1:\n> "))
-            b = int(input("Enter the 'denominator' value of Fraction 1:\n> "))
-            c = int(input("Enter the 'numerator' value of Fraction 2:\n> "))
-            d = int(input("Enter the 'denominator' value of Fraction 2:\n> "))
+            a = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            b = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            c = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 2{RESET}:\n> "))
+            d = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 2{RESET}:\n> "))
             x = fractions.Fraction(a, b)
             y = fractions.Fraction(c, d)
-            print(x * y)
+            print(f"{GREEN}{x * y}{RESET}")
         elif N == 4:
-            a = int(input("Enter the 'numerator' value of Fraction 1:\n> "))
-            b = int(input("Enter the 'denominator' value of Fraction 1:\n> "))
-            c = int(input("Enter the 'numerator' value of Fraction 2:\n> "))
-            d = int(input("Enter the 'denominator' value of Fraction 2:\n> "))
+            a = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            b = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 1{RESET}:\n> "))
+            c = int(input(f"Enter the {BLUE}numerator value{RESET} of {RED}Fraction 2{RESET}:\n> "))
+            d = int(input(f"Enter the {BLUE}denominator value{RESET} of {RED}Fraction 2{RESET}:\n> "))
             x = fractions.Fraction(a, b)
             y = fractions.Fraction(c, d)
-            print(x / y)
+            print(f"{GREEN}{x / y}{RESET}")
     elif choice == 14:
         print("Options:")
         print("1. Radians")
         print("2. Degrees")
         N = int(input("Your choice:\n> "))
         if N == 1:
-            X = float(input("Enter the degree in Radians:\n> "))
+            X = float(input(f"Enter the {BLUE}degree in Radians{RESET}:\n> "))
             x = math.degrees(X)
-            print(f"Sine: {math.sin(x)}")
-            print(f"Cosine: {math.cos(x)}")
-            print(f"Tangent: {math.tan(x)}")
-            print(f"Arcsine: {math.asin(x)}")
-            print(f"Arccosine: {math.acos(x)}")
-            print(f"Arctangent: {math.atan(x)}")
-            print(f"Hyperbolic Sine: {math.sinh(x)}")
-            print(f"Hyperbolic Cosine: {math.cosh(x)}")
-            print(f"Hyperbolic Tangent: {math.tanh(x)}")
+            print(f"Sine: {GREEN}{math.sin(x)}{RESET}")
+            print(f"Cosine: {GREEN}{math.cos(x)}{RESET}")
+            print(f"Tangent: {GREEN}{math.tan(x)}{RESET}")
+            print(f"Arcsine: {GREEN}{math.asin(x)}{RESET}")
+            print(f"Arccosine: {GREEN}{math.acos(x)}{RESET}")
+            print(f"Arctangent: {GREEN}{math.atan(x)}{RESET}")
+            print(f"Hyperbolic Sine: {GREEN}{math.sinh(x)}{RESET}")
+            print(f"Hyperbolic Cosine: {GREEN}{math.cosh(x)}{RESET}")
+            print(f"Hyperbolic Tangent: {GREEN}{math.tanh(x)}{RESET}")
         elif N == 2:
-            x = float(input("Enter the degree in Degrees:\n> "))
-            print(f"Sine: {math.sin(x)}")
-            print(f"Cosine: {math.cos(x)}")
-            print(f"Tangent: {math.tan(x)}")
-            print(f"Arcsine: {math.asin(x)}")
-            print(f"Arccosine: {math.acos(x)}")
-            print(f"Arctangent: {math.atan(x)}")
-            print(f"Hyperbolic Sine: {math.sinh(x)}")
-            print(f"Hyperbolic Cosine: {math.cosh(x)}")
-            print(f"Hyperbolic Tangent: {math.tanh(x)}")
+            x = float(input(f"Enter the {BLUE}degree in Degrees{RESET}:\n> "))
+            print(f"Sine: {GREEN}{math.sin(x)}{RESET}")
+            print(f"Cosine: {GREEN}{math.cos(x)}{RESET}")
+            print(f"Tangent: {GREEN}{math.tan(x)}{RESET}")
+            print(f"Arcsine: {GREEN}{math.asin(x)}{RESET}")
+            print(f"Arccosine: {GREEN}{math.acos(x)}{RESET}")
+            print(f"Arctangent: {GREEN}{math.atan(x)}{RESET}")
+            print(f"Hyperbolic Sine: {GREEN}{math.sinh(x)}{RESET}")
+            print(f"Hyperbolic Cosine: {GREEN}{math.cosh(x)}{RESET}")
+            print(f"Hyperbolic Tangent: {GREEN}{math.tanh(x)}{RESET}")
     elif choice == 15:
-        a = int(input("Enter the 'n' value:\n> "))
-        b = int(input("Enter the 'k' value:\n> "))
+        a = int(input(f"Enter the {BLUE}n value{RESET}:\n> "))
+        b = int(input(f"Enter the {BLUE}k value{RESET}:\n> "))
         x = math.factorial(a)
         X = math.factorial(a - b)
-        print(x / X)
+        print(f"{GREEN}{x / X}{RESET}")
     elif choice == 16:
-        a = int(input("Enter the 'n' value: "))
-        b = int(input("Enter the 'k' value: "))
-        print(math.comb(a, b))
+        a = int(input(f"Enter the {BLUE}n value{RESET}: "))
+        b = int(input(f"Enter the {BLUE}k value{RESET}: "))
+        print(f"{GREEN}{math.comb(a, b)}{RESET}")
     elif choice == 17:
-        x = int(input("Enter the 'x' value:\n> "))
-        print(math.factorial(x))
+        x = int(input(f"Enter the {BLUE}x value{RESET}:\n> "))
+        print(f"{GREEN}{math.factorial(x)}{RESET}")
     elif choice == 18:
-        N = int(input("Enter the number to be factored:\n> "))
+        print("Lateral Surface Area")
+        print("Options:")
+        print("1. Cube")
+        print("2. Rectangular Prism")
+        print("3. Triangular Prism")
+        print("4. Cone")
+        print("5. ")
+        N = input("Your choice:\n> ")
+        if N == 1:
+            a = input("")
+        elif N == 2:
+            a = input("")
+        elif N == 3:
+            a = input("")
+        elif N == 4:
+            r = input("Enter the ")
+    elif choice == 21:
+        N = int(input(f"Enter the {BLUE}number to be factored{RESET}:\n> "))
         for x in range (1, N + 1):
             if N % x == 0:
                 print(x, end=" ")
-    elif choice == 19:
-        N = int(input("Enter a row of Pascal's Triangle:\n> "))
+    elif choice == 22:
+        N = int(input(f"Enter a {BLUE}row of Pascal's Triangle{RESET}:\n> "))
         for i in range(N + 1):
                 print(math.comb(N, i), end=" ")
         print()
-    elif choice == 20:
-        n = int(input("Enter the number of Fibonacci Sequence to be displayed:\n> "))
+    elif choice == 23:
+        n = int(input(f"Enter the {BLUE}number of Fibonacci Sequence{RESET} to be displayed:\n> "))
         a = 0
         b = 1
         next = b  
@@ -383,7 +404,7 @@ def math_choice():
             a, b = b, next
             next = a + b
         print()
-    elif choice == 21:
+    elif choice == 24:
         def is_prime(num):
             if num <= 1:
                 return False
@@ -396,13 +417,13 @@ def math_choice():
                     return False
             return True
         try:
-            n = int(input("Enter the 'n' value:\n> "))
+            n = int(input(f"Enter the {BLUE}n value{RESET}:\n> "))
             if is_prime(n):
-                print(f"Prime number.")
+                print(f"{GREEN}Prime number{RESET}.")
             else:
-                print(f"Not a prime number.")
+                print(f"{RED}Not a prime number{RESET}.")
         except ValueError:
-            print("Invalid input. Please enter an integer.")
+            print(f"{RED}Invalid input{RESET}. Please enter an integer.")
 def pause():
     x = input("")
     while x == True:
@@ -431,11 +452,14 @@ while True:
     print("15. Calculate Permutations")
     print("16. Calculate Combinations")
     print("17. Calculate Factorials")
+    print("18. Lateral Surface Area")
+    print("19. Total Surface Area")
+    print("20. Volume")
     print("- Niche Functions -")
-    print("18. Factoring Numbers")
-    print("19. Display Rows of Pascal's Triangle")
-    print("20. Display Sequence of Fibonnaci Sequence")
-    print("21. Determine if n is prime")
+    print("21. Factoring Numbers")
+    print("22. Display Rows of Pascal's Triangle")
+    print("23. Display Sequence of Fibonnaci Sequence")
+    print("24. Determine if n is prime")
     global choice 
     choice = int(input("Your choice:\n> "))
     math_choice()
