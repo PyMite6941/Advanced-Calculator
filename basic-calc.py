@@ -1,17 +1,18 @@
-import math
 import fractions
+import math
 import numpy as np
+import time
 BLUE = '\033[34m'
 GREEN = '\033[32m'
 RED = '\033[31m'
 RESET = '\033[0m'
-def math_choice():
+def math_choice(choice):
     if choice == 1:
         total = 0
         print("Addition")
         while True:
-            num_str = float(input("> "))
-            if num_str == 'done' or num_str == '':
+            num_str = float(input(""))
+            if num_str.lower() == 'done' or num_str == '':
                 break
             try:
                 num = float(num_str)
@@ -23,8 +24,8 @@ def math_choice():
         total = 0
         print("Subtraction")
         while True:
-            num_str = float(input("> "))
-            if num_str == 'done' or num_str == '':
+            num_str = input("")
+            if num_str.lower() == 'done' or num_str == '':
                 break
             try:
                 num = float(num_str)
@@ -36,8 +37,8 @@ def math_choice():
         total = 1
         print("Multiplication")
         while True:
-            num_str = float(input("> "))
-            if num_str == 'done' or num_str == '':
+            num_str = input("")
+            if num_str.lower() == 'done' or num_str == '':
                 break
             try:
                 num = float(num_str)
@@ -50,8 +51,8 @@ def math_choice():
         print("Division")
         first_number_entered = False
         while True:
-            num_str = float(input("> "))
-            if num_str == 'done' or num_str == '':
+            num_str = float(input(""))
+            if num_str.lower() == 'done' or num_str == '':
                 if not first_number_entered:
                     print(f"{RED}No numbers entered for division{RESET}.")
                 break
@@ -251,6 +252,7 @@ def math_choice():
             return a * b
         print(lcm(a, b))
     elif choice == 11:
+        print("Finding the Greatest Common Multiple")
         a_str = float(input(f"Enter the {BLUE}first integar{RESET}:\n> "))
         b_str = float(input(f"Enter the {BLUE}second integar{RESET}:\n> "))
         a = int(a_str)
@@ -342,68 +344,242 @@ def math_choice():
             print(f"Hyperbolic Cosine: {GREEN}{math.cosh(x)}{RESET}")
             print(f"Hyperbolic Tangent: {GREEN}{math.tanh(x)}{RESET}")
         elif N == 2:
-            x = float(input(f"Enter the {BLUE}degree in Degrees{RESET}:\n> "))
-            print(f"Sine: {GREEN}{math.sin(x)}{RESET}")
-            print(f"Cosine: {GREEN}{math.cos(x)}{RESET}")
-            print(f"Tangent: {GREEN}{math.tan(x)}{RESET}")
-            print(f"Arcsine: {GREEN}{math.asin(x)}{RESET}")
-            print(f"Arccosine: {GREEN}{math.acos(x)}{RESET}")
-            print(f"Arctangent: {GREEN}{math.atan(x)}{RESET}")
-            print(f"Hyperbolic Sine: {GREEN}{math.sinh(x)}{RESET}")
-            print(f"Hyperbolic Cosine: {GREEN}{math.cosh(x)}{RESET}")
-            print(f"Hyperbolic Tangent: {GREEN}{math.tanh(x)}{RESET}")
+            while True:
+                try:
+                    x = float(input(f"Enter the {BLUE}degree in Degrees{RESET}:\n> "))
+                    print(f"Sine: {GREEN}{math.sin(x)}{RESET}")
+                    print(f"Cosine: {GREEN}{math.cos(x)}{RESET}")
+                    print(f"Tangent: {GREEN}{math.tan(x)}{RESET}")
+                    print(f"Arcsine: {GREEN}{math.asin(x)}{RESET}")
+                    print(f"Arccosine: {GREEN}{math.acos(x)}{RESET}")
+                    print(f"Arctangent: {GREEN}{math.atan(x)}{RESET}")
+                    print(f"Hyperbolic Sine: {GREEN}{math.sinh(x)}{RESET}")
+                    print(f"Hyperbolic Cosine: {GREEN}{math.cosh(x)}{RESET}")
+                    print(f"Hyperbolic Tangent: {GREEN}{math.tanh(x)}{RESET}")
+                except ValueError as e:
+                    print(f"{RED}Invalid input!{RESET}")
+                pause()
+                main()
     elif choice == 15:
-        a = int(input(f"Enter the {BLUE}n value{RESET}:\n> "))
-        b = int(input(f"Enter the {BLUE}k value{RESET}:\n> "))
-        x = math.factorial(a)
-        X = math.factorial(a - b)
-        print(f"{GREEN}{x / X}{RESET}")
+        while True:
+            try:
+                a = int(input(f"Enter the {BLUE}n value{RESET}:\n> "))
+                b = int(input(f"Enter the {BLUE}k value{RESET}:\n> "))
+                x = math.factorial(a)
+                X = math.factorial(a - b)
+                print(f"{GREEN}{x / X}{RESET}")
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
     elif choice == 16:
-        a = int(input(f"Enter the {BLUE}n value{RESET}: "))
-        b = int(input(f"Enter the {BLUE}k value{RESET}: "))
-        print(f"{GREEN}{math.comb(a, b)}{RESET}")
+        while True:
+            try:
+                a = int(input(f"Enter the {BLUE}n value{RESET}: "))
+                b = int(input(f"Enter the {BLUE}k value{RESET}: "))
+                print(f"{GREEN}{math.comb(a, b)}{RESET}")
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
     elif choice == 17:
-        x = int(input(f"Enter the {BLUE}x value{RESET}:\n> "))
-        print(f"{GREEN}{math.factorial(x)}{RESET}")
+        while True:
+            try:
+                x = int(input(f"Enter the {BLUE}x value{RESET}:\n> "))
+                print(f"{GREEN}{math.factorial(x)}{RESET}")
+            except ValueError as e:
+                print(f"")
     elif choice == 18:
-        print("Lateral Surface Area")
-        print("Options:")
-        print("1. Cube")
-        print("2. Rectangular Prism")
-        print("3. Triangular Prism")
-        print("4. Cone")
-        print("5. ")
-        N = input("Your choice:\n> ")
-        if N == 1:
-            a = input("")
-        elif N == 2:
-            a = input("")
-        elif N == 3:
-            a = input("")
-        elif N == 4:
-            r = input("Enter the ")
+        while True:
+            print("Lateral Surface Area")
+            print("Options: (more in the future)")
+            print("1. Cube")
+            print("2. Rectangular Prism")
+            print("3. Triangular Prism")
+            print("4. Cone")
+            print("5. Pyramid")
+            try:
+                N = int(input("Your choice:\n> "))
+                if N == 1:
+                    while True:
+                        try:
+                            a = float(input(f"Enter the {BLUE}side length{RESET} of the {RED}cube{RESET}:\n> "))
+                            print(f"{GREEN}{4*(a**2)}{RESET}")
+                        except ValueError as e:
+                            print(f"{RED}Invalid input!{RESET}")
+                elif N == 2:
+                    a = float(input(f"Enter the {BLUE}base length{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    b = float(input(f"Enter the {BLUE}base width{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    print(f"{GREEN}{h*(2*(a+b))}{RESET}")
+                elif N == 3:
+                    a = float(input(f"Enter the {BLUE}first side length{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    b = float(input(f"Enter the {BLUE}second side length{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    c = float(input(f"Enter the {BLUE}third side length{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    print(f"{GREEN}{h*(a+b+c)}{RESET}")
+                elif N == 4:
+                    r = float(input(f"Enter the {BLUE}radius{RESET} of the {RED}cone{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}cone{RESET}:\n> "))
+                    l = math.sqrt(r**2 + h**2)
+                    print(f"{GREEN}{math.pi*r*l:.2f}{RESET}")
+                elif N == 5:
+                    print("Options:")
+                    print("1. Pyramid with a Square Base")
+                    print("2. Pyramid with a Triangular Base")
+                    n = int(input("Your choice:\n> "))
+                    if n == 1:
+                        a = float(input(f"Enter the {BLUE}base length{RESET} of the {RED}pyramid with a square base{RESET}:\n> "))
+                        h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}pyramid with a square base{RESET}:\n> "))
+                        print(f"{GREEN}{a*math.sqrt((a**2)+4*(h**2))}{RESET}")
+                    elif n == 2:
+                        b = float(input(f"Enter the {BLUE}base perimiter{RESET} of the {RED}pyramid with a triangular base{RESET}:\n> "))
+                        l = float(input(f"Enter the {BLUE}slant height{RESET} of a {RED}pyramid with a triangular base{RESET}:\n> "))
+                        print(f"{GREEN}{(1/2)*b*l}{RESET}")
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
+    elif choice == 19:
+        while True:
+            print("Total Surface Area")
+            print("Options: (more in the future)")
+            print("1. Cube")
+            print("2. Rectangular Prism")
+            print("3. Triangular Prism")
+            print("4. Cone")
+            print("5. Pyramid")
+            try:
+                N = int(input("Your choice:\n> "))
+                if N == 1:
+                    a = float(input(f"Enter the {BLUE}side length{RESET} of the {RED}cube{RESET}:\n> "))
+                    print(f"{GREEN}{6*(a**2)}{RESET}")
+                elif N == 2:
+                    l = float(input(f"Enter the {BLUE}length{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    w = float(input(f"Enter the {BLUE}width{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    print(f"{GREEN}{2*((l*w)+(l*h)+(w*h))}{RESET}")
+                elif N == 3:
+                    a = float(input(f"Enter the {BLUE}first base side{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    b = float(input(f"Enter the {BLUE}second base side{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    c = float(input(f"Enter the {BLUE}third base side{RESET} for the {RED}triangular prism{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    print(f"{GREEN}{(h*(a+b+c))+(2*((1/2)*a*b*math.sin(c)))}{RESET}")
+                elif N == 4:
+                    r = float(input(f"Enter the {BLUE}radius{RESET} of the {RED}cone{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}cone{RESET}:\n> "))
+                    s = math.sqrt((r**2)+(h**2))
+                    print(f"{GREEN}{(math.pi*r*s)+(math.pi*(r**2))}{RESET}")
+                elif N == 5:
+                    while True:
+                        print("Options:")
+                        print("1. Pyramid with a Square Base")
+                        print("2. Pyramid with a Triangular Base")
+                        try:
+                            n = int(input("Your choice:\n> "))
+                            if n == 1:
+                                a = float(input(f"Enter the {BLUE}base length{RESET} of the {RED}pyramid with a square base{RESET}:\n> "))
+                                h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}pyramid with a square base{RESET}:\n> "))
+                                print(f"{GREEN}{a*(a+math.sqrt((a**2)+4(h**2)))}{RESET}")
+                            elif n == 2:
+                                b = float(input(f"Enter the {BLUE}base perimiter{RESET} of the {RED}pyramid with a triangular base{RESET}:\n> "))
+                                l = float(input(f"Enter the {BLUE}height{RESET} of the {RED}pyramid with a triangular base{RESET}:]n> "))
+                                ba = float(input(f"Enter the {BLUE}base area{RESET} of the {RED}pyramid with a triangular base{RESET}:\n> "))
+                        except ValueError as e:
+                            print(f"{RED}Invalid input!{RESET}")
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
+    elif choice == 20:
+        while True:
+            print("Volume")
+            print("Options: (more in the future)")
+            print("1. Cube")
+            print("2. Rectuangular Prism")
+            print("3. Triangular Prism")
+            print("4. Cone")
+            print("5. Pyramid")
+            try:
+                N = int(input("Your choice:\n> "))
+                if N == 1:
+                    a = float(input(f"Enter the {BLUE}side length{RESET} of the {RED}cube{RESET}:\n> "))
+                    print(f"{GREEN}{a**3}{RESET}")
+                elif N == 2:
+                    l = float(input(f"Enter the {BLUE}length{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    w = float(input(f"Enter the {BLUE}width{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}rectangular prism{RESET}:\n> "))
+                    print(f"{GREEN}{l*w*h}{RESET}")
+                elif N == 3:
+                    a = float(input(f"Enter the {BLUE}first base side{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    b = float(input(f"Enter the {BLUE}second base length{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    c = float(input(f"Enter the {BLUE}third base length{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}triangular prism{RESET}:\n> "))
+                    s = (a+b+c)/2
+                    ab = math.sqrt(s*(s-a)*(s-b)*(s-c))
+                    print(f"{GREEN}{ab*h}{RESET}")
+                elif N == 4:
+                    r = float(input(f"Enter the {BLUE}radius{RESET} of the {RED}cone{RESET}:\n> "))
+                    h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}cone{RESET}:\n> "))
+                    print(f"{GREEN}{(1/3)*math.pi*(r**2)*h}{RESET}")
+                elif N == 5:
+                    print("Options:")
+                    print("1. Pyramid with a Square Base")
+                    print("2. Pyramid with a Triangular Base")
+                    try:
+                        n = int(input("Your choice:\n> "))
+                        if n == 1:
+                            a = float(input(f"Enter the {BLUE}base length{RESET} of the {RED}pyramid with a square base{RESET}:\n> "))
+                            h = float(input(f"Enter the {BLUE}height{RESET} of the {RED}pyramid with a square base{RESET}:\n> "))
+                            print(f"{GREEN}{(1/3)*(a**2)*(h)}{RESET}")
+                        elif n == 2:
+                            a = float(input(f"Enter the {BLUE}{RESET} of the {RED}pyramid with a triangular base{RESET}:\n> "))
+                    except ValueError as e:
+                        print(f"{RED}Invalid input!{RESET}")
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
     elif choice == 21:
-        N = int(input(f"Enter the {BLUE}number to be factored{RESET}:\n> "))
-        for x in range (1, N + 1):
-            if N % x == 0:
-                print(x, end=" ")
+        while True:
+            try:
+                N = int(input(f"Enter the {BLUE}number to be factored{RESET}:\n> "))
+                for x in range (1, N + 1):
+                    if N % x == 0:
+                        print(x, end=" ")
+                        pause()
+                        main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
     elif choice == 22:
-        N = int(input(f"Enter a {BLUE}row of Pascal's Triangle{RESET}:\n> "))
-        for i in range(N + 1):
-                print(math.comb(N, i), end=" ")
-        print()
+        while True:
+            try:
+                N = int(input(f"Enter a {BLUE}row of Pascal's Triangle{RESET}:\n> "))
+                for i in range(N + 1):
+                    print(math.comb(N, i), end=" ")
+                print()
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
     elif choice == 23:
-        n = int(input(f"Enter the {BLUE}number of Fibonacci Sequence{RESET} to be displayed:\n> "))
-        a = 0
-        b = 1
-        next = b  
-        count = 1
-        while count <= n:
-            print(next, end=" ")
-            count += 1
-            a, b = b, next
-            next = a + b
-        print()
+        while True:
+            try:
+                n = int(input(f"Enter the {BLUE}number of Fibonacci Sequence{RESET} to be displayed:\n> "))
+                a = 0
+                b = 1
+                next = b  
+                count = 1
+                while count <= n:
+                    print(next, end=" ")
+                    count += 1
+                    a, b = b, next
+                    next = a + b
+                print()
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
     elif choice == 24:
         def is_prime(num):
             if num <= 1:
@@ -416,51 +592,54 @@ def math_choice():
                 if num % i == 0:
                     return False
             return True
-        try:
-            n = int(input(f"Enter the {BLUE}n value{RESET}:\n> "))
-            if is_prime(n):
-                print(f"{GREEN}Prime number{RESET}.")
-            else:
-                print(f"{RED}Not a prime number{RESET}.")
-        except ValueError:
-            print(f"{RED}Invalid input{RESET}. Please enter an integer.")
+        while True:
+            try:
+                n = int(input(f"Enter the {BLUE}n value{RESET}:\n> "))
+                if is_prime(n):
+                    print(f"{GREEN}Prime number{RESET}.")
+                else:
+                    print(f"{RED}Not a prime number{RESET}.")
+                pause()
+                main()
+            except ValueError as e:
+                print(f"{RED}Invalid input!{RESET}")
 def pause():
-    x = input("")
-    while x == True:
-        continue
+    time.sleep(5)
+def main(choice):
+    while True:
+        print("")
+        print("Options:")
+        print("- Basic Arithmetic -")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Divison")
+        print("5. Calculate Powers")
+        print("6. Calculate Roots")
+        print("- Advanced Maths -")
+        print("7. Solving Matrices")
+        print("8. Calculating Logarithms")
+        print("9. Convert Degrees and Radians")
+        print("- Math Foundations -")
+        print("10. Find the Least Common Multiple")
+        print("11. Find the Greatest Common Multiple")
+        print("12. Convert Decimals and Fractions")
+        print("13. Basic Arithmetic with Fractions")
+        print("14. Trigonomic Functions")
+        print("- Advanced Formulas -")
+        print("15. Calculate Permutations")
+        print("16. Calculate Combinations")
+        print("17. Calculate Factorials")
+        print("18. Lateral Surface Area")
+        print("19. Total Surface Area")
+        print("20. Volume")
+        print("- Niche Functions -")
+        print("21. Factoring Numbers")
+        print("22. Display Rows of Pascal's Triangle")
+        print("23. Display Sequence of Fibonnaci Sequence")
+        print("24. Determine if n is prime")
+        choice = int(input("Your choice:\n> "))
+        math_choice()
+        pause()
 while True:
-    print("")
-    print("Options:")
-    print("- Basic Arithmetic -")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Divison")
-    print("5. Calculate Powers")
-    print("6. Calculate Roots")
-    print("- Advanced Maths -")
-    print("7. Solving Matrices")
-    print("8. Calculating Logarithms")
-    print("9. Convert Degrees and Radians")
-    print("- Math Foundations -")
-    print("10. Find the Least Common Multiple")
-    print("11. Find the Greatest Common Multiple")
-    print("12. Convert Decimals and Fractions")
-    print("13. Basic Arithmetic with Fractions")
-    print("14. Trigonomic Functions")
-    print("- Advanced Formulas -")
-    print("15. Calculate Permutations")
-    print("16. Calculate Combinations")
-    print("17. Calculate Factorials")
-    print("18. Lateral Surface Area")
-    print("19. Total Surface Area")
-    print("20. Volume")
-    print("- Niche Functions -")
-    print("21. Factoring Numbers")
-    print("22. Display Rows of Pascal's Triangle")
-    print("23. Display Sequence of Fibonnaci Sequence")
-    print("24. Determine if n is prime")
-    global choice 
-    choice = int(input("Your choice:\n> "))
-    math_choice()
-    pause()
+    main()
